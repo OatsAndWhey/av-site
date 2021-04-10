@@ -22,4 +22,10 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to, from, next) => {
+  // console.log(to.name);
+  document.title = `${process.env.VUE_APP_TITLE} | ${to.name}`;
+  next();
+});
+
 export default router;
