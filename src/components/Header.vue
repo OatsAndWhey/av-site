@@ -1,7 +1,11 @@
 <template>
 	<div class="header">
-		<img alt="Vue logo" src="../assets/logo.png" />
-		<Navigation v-if="!mobileView" />
+		<div class="header-content">
+			<router-link to="/"
+				><img alt="Vue logo" src="../assets/logo.png"
+			/></router-link>
+			<Navigation v-if="!mobileView" />
+		</div>
 		<Burger v-if="mobileView" @click.prevent="toggle" />
 		<transition name="slide">
 			<Sidebar v-if="mobileView && showNav" />
@@ -49,16 +53,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#nav {
-	padding: 30px;
+@import '../styles/styles.scss';
 
-	a {
-		font-weight: bold;
-		color: #2c3e50;
+.header {
+	background-color: $primary-background;
+	display: flex;
+	justify-content: center;
+	box-shadow: $material-shadow;
+}
 
-		&.router-link-exact-active {
-			color: #42b983;
-		}
+.header-content {
+	border: 0;
+	width: 100vw;
+	max-width: 1200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	img {
+		max-height: 100px;
+		padding: 20px;
+		flex-grow: 0;
+	}
+}
+
+@media screen and (max-width: $small) {
+	.header-content {
+		width: 100vw;
+		max-width: 1200px;
+		display: flex;
+		justify-content: center;
 	}
 }
 

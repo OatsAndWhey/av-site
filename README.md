@@ -1,4 +1,4 @@
-# av-site
+# EZ AV (?) Website Buildout
 
 ## Project setup
 

@@ -1,7 +1,8 @@
 <template>
 	<div id="nav">
-		<router-link to="/">Home</router-link> |
+		<router-link to="/">Home</router-link>
 		<router-link to="/about">About</router-link>
+		<router-link to="/contact">Contact Us</router-link>
 	</div>
 </template>
 
@@ -15,15 +16,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../styles/styles.scss';
+
 #nav {
 	padding: 30px;
 
 	a {
 		font-weight: bold;
-		color: #2c3e50;
+		color: $primary-text;
+		padding: 0 20px;
+		text-decoration: none;
+		font-size: 1.5rem;
 
 		&.router-link-exact-active {
-			color: #42b983;
+			color: $active-text;
 		}
 	}
 }

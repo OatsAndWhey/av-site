@@ -32,34 +32,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../styles/styles.scss';
+
 #burger {
 	cursor: pointer;
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .burger-button {
 	position: relative;
-	height: 30px;
-	width: 32px;
+	height: 3rem;
+	width: 3rem;
 	display: block;
 	z-index: 999;
 	border: 0;
 	border-radius: 0;
-	background-color: transparent;
+	background-color: $primary-background;
+	box-shadow: $material-shadow;
 	pointer-events: all;
 	transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .burger-bar {
-	background-color: #130f40;
+	background-color: $active-text;
 	position: absolute;
 	top: 50%;
 	right: 6px;
 	left: 6px;
-	height: 2px;
+	height: 3px;
 	width: auto;
 	margin-top: -1px;
 	transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
@@ -69,7 +71,7 @@ export default {
 
 .burger-bar--1 {
 	-webkit-transform: translateY(-6px);
-	transform: translateY(-6px);
+	transform: translateY(-0.7rem);
 }
 
 .burger-bar--2 {
@@ -86,7 +88,7 @@ export default {
 }
 
 .burger-bar--3 {
-	transform: translateY(6px);
+	transform: translateY(0.7rem);
 }
 
 #burger.active .burger-button {
@@ -94,7 +96,7 @@ export default {
 }
 
 #burger.active .burger-bar {
-	background-color: #130f40;
+	background-color: $active-text;
 }
 
 #burger.active .burger-bar--1 {
