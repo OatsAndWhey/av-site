@@ -1,6 +1,7 @@
 <template>
 	<div class="sidebar">
 		<router-link to="/">Home</router-link>
+		<router-link to="/design">Design</router-link>
 		<router-link to="/about">About</router-link>
 		<router-link to="/contact">Contact Us</router-link>
 	</div>
@@ -22,6 +23,7 @@ export default {
 	right: 20px;
 	height: calc(50vh);
 	width: 250px;
+	z-index: 999;
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;

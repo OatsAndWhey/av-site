@@ -1,6 +1,17 @@
 <template>
-	<div class="home">
+	<div class="home main">
 		<h1 class="page-title">This is the home page</h1>
+		<p>
+			I think there should be a carousel of stock images here until we can get
+			our own.
+		</p>
+		<p>
+			The build mini-app should be right below the heading below the carousel.
+		</p>
+		<p>
+			Contact form right at the bottom and also on the <i>Contact Us</i> page.
+		</p>
+		<p>Sitemap and stuff in the footer.c</p>
 		<p>
 			This is where you'll be able to design all your own systems or choose to
 			contact us to put a custom build together for you.
