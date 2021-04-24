@@ -49,7 +49,7 @@ export default {
 	display: block;
 	z-index: 999;
 	border: 0;
-	border-radius: 0;
+	border-radius: 0.25em;
 	background-color: $primary-background;
 	box-shadow: $material-shadow;
 	pointer-events: all;
@@ -64,6 +64,7 @@ export default {
 	left: 6px;
 	height: 3px;
 	width: auto;
+	border-radius: 0.25em;
 	margin-top: -1px;
 	transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
 		opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),

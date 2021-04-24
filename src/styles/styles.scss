@@ -18,8 +18,26 @@ body {
 		font-size: $subheading-size;
 	}
 
-	p {
+	p,
+	option,
+	label,
+	select {
 		font-size: $paragraph-size;
+	}
+
+	select {
+		appearance: none;
+		background-color: transparent;
+		margin: 0;
+		width: 50%;
+		outline: none;
+
+		border: 1px solid $primary-background;
+		border-radius: 0.25em;
+		padding: 0.25em 0.5em;
+		cursor: pointer;
+		line-height: 1.1;
+		background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
 	}
 }
 

@@ -1,28 +1,58 @@
 <template>
 	<div class="design main">
-		<h1 class="page-title">Design Page</h1>
+		<h1 class="page-title">Design</h1>
 		<!-- Dropdowns -->
-		<div id="v-model-select" class="demo">
-			<select v-model="selected">
-				<option disabled value="">Please select one</option>
-				<option>Monitor</option>
-				<option>Display</option>
-				<option>Speakers</option>
-			</select>
-		</div>
+		<form action="#" id="configform">
+			<!-- Display -->
+			<div id="display-select" class="form-select">
+				<label for="display">Room size:</label>
+				<select name="display" v-model="selectedDisplay">
+					<option disabled value="">Please select one</option>
+					<option>Huddle</option>
+					<option>Small</option>
+					<option>Medium</option>
+					<option>Large</option>
+					<option>X-Large</option>
+				</select>
+			</div>
+			<!-- System -->
+			<transition name="fade">
+				<div id="system-select" class="form-select" v-if="selectedDisplay">
+					<label for="system">Room use:</label>
+					<select name="system" v-model="selectedSystem">
+						<option disabled value="">Please select one</option>
+						<option>Collaboration</option>
+						<option>Presentation</option>
+						<option>Conference call</option>
+					</select>
+				</div>
+			</transition>
+			<!-- Speakers Layout -->
+			<transition name="fade">
+				<div
+					id="speakers-select"
+					class="form-select"
+					v-if="selectedDisplay && selectedSystem"
+				>
+					<label for="speakers">Speaker layout:</label>
+					<select name="speakers" v-model="selectedSpeakers">
+						<option disabled value="">Please select one</option>
+						<option>Below display</option>
+						<option>Sides of display</option>
+						<option>Ceiling tile</option>
+					</select>
+				</div>
+			</transition>
+		</form>
 
 		<!-- Icons -->
 		<transition name="slide-fade" mode="out-in">
-			<div class="img-container" v-if="selected === 'Monitor'">
+			<div class="img-container" v-if="selectedSpeakers">
 				<img alt="Monitor Icon" src="../assets/icons/monitor_icon_small.svg" />
+				<p>{{ selectedDisplay }}</p>
+				<p>{{ selectedSystem }}</p>
+				<p>{{ selectedSpeakers }}</p>
 			</div>
-			<div class="img-container" v-else-if="selected === 'Display'">
-				<img alt="Monitor Icon" src="../assets/icons/display_icon_small.svg" />
-			</div>
-			<div class="img-container" v-else-if="selected === 'Speakers'">
-				<img alt="Monitor Icon" src="../assets/icons/speakers_icon_small.svg" />
-			</div>
-			<div class="img-container" v-else>Nothing Selected</div>
 		</transition>
 	</div>
 </template>
@@ -32,7 +62,9 @@ export default {
 	name: 'Design',
 	data() {
 		return {
-			selected: '',
+			selectedDisplay: '',
+			selectedSystem: '',
+			selectedSpeakers: '',
 		};
 	},
 };
@@ -45,7 +77,38 @@ export default {
 }
 
 img {
-	width: 200px;
+	width: 60vw;
+	max-width: 200px;
+}
+
+.form-select {
+	padding-bottom: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.form-select label {
+	display: block;
+}
+
+.fade-enter-active {
+	transition: all 0.1s ease;
+}
+.fade-leave-active {
+	transition: all 0.1s ease;
+}
+.fade-enter-from {
+	opacity: 0;
+}
+.fade-enter-to {
+	opacity: 1;
+}
+.fade-leave-from {
+	opacity: 1;
+}
+.fade-leave-to {
+	opacity: 0;
 }
 
 /* Enter and leave animations can use different */

@@ -23,6 +23,7 @@ export default {
 	right: 20px;
 	height: calc(50vh);
 	width: 250px;
+	border-radius: 0.25em;
 	z-index: 999;
 	overflow: hidden;
 	display: flex;
