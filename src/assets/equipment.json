@@ -1,0 +1,39 @@
+{
+	"displays": [
+		{
+			"roomSize": "Huddle",
+			"size": "55",
+			"brand": "Samsung",
+			"model": "QB55R",
+			"cost": "910.00"
+		},
+		{
+			"roomSize": "Small",
+			"size": "65",
+			"brand": "Samsung",
+			"model": "QB65R",
+			"cost": "1050.00" 
+		},
+		{
+			"roomSize": "Medium",
+			"size": "75",
+			"brand": "Samsung",
+			"model": "QB75R",
+			"cost": "1938.00" 
+		},
+		{
+			"roomSize": "Large",
+			"size": "85",
+			"brand": "Samsung",
+			"model": "QN85Q60TAFXZA",
+			"cost": "2100.00" 
+		},
+		{
+			"roomSize": "X-Large",
+			"size": "98",
+			"brand": "Samsung",
+			"model": "QB98R",
+			"cost": "9263.00" 
+		}
+	]
+}

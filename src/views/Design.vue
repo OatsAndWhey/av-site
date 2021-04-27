@@ -8,11 +8,13 @@
 				<label for="display">Room size:</label>
 				<select name="display" v-model="selectedDisplay">
 					<option disabled value="">Please select one</option>
-					<option>Huddle</option>
-					<option>Small</option>
-					<option>Medium</option>
-					<option>Large</option>
-					<option>X-Large</option>
+					<option
+						v-for="display in displays"
+						:key="display.size"
+						:value="display"
+					>
+						{{ display.roomSize }}
+					</option>
 				</select>
 			</div>
 			<!-- System -->
@@ -49,7 +51,13 @@
 		<transition name="slide-fade" mode="out-in">
 			<div class="img-container" v-if="selectedSpeakers">
 				<img alt="Monitor Icon" src="../assets/icons/monitor_icon_small.svg" />
-				<p>{{ selectedDisplay }}</p>
+				<p>
+					{{
+						`${selectedDisplay.brand}
+						${selectedDisplay.model} -
+						${selectedDisplay.size}" - \$${selectedDisplay.cost}`
+					}}
+				</p>
 				<p>{{ selectedSystem }}</p>
 				<p>{{ selectedSpeakers }}</p>
 			</div>
@@ -58,10 +66,13 @@
 </template>
 
 <script>
+import { displays } from '../assets/equipment.json';
+
 export default {
 	name: 'Design',
 	data() {
 		return {
+			displays,
 			selectedDisplay: '',
 			selectedSystem: '',
 			selectedSpeakers: '',
