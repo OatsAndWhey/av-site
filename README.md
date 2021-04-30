@@ -1,4 +1,4 @@
-# EZ AV (?) Website Buildout
+# Vortex AV Website Buildout
 
 ## Project setup
 

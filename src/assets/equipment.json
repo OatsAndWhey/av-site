@@ -35,5 +35,67 @@
 			"model": "QB98R",
 			"cost": "9263.00" 
 		}
+	],
+	"mounts" : [
+		{
+			"label": "Single",
+			"size": {
+				"55": {
+					"brand": "Chief",
+					"model": "LSM1U",
+					"cost": "182.40"
+				},
+				"65": {
+					"brand": "Chief",
+					"model": "XSM1U",
+					"cost": "202.60"
+				},
+				"75": {
+					"brand": "Chief",
+					"model": "XSM1U",
+					"cost": "202.60"
+				},
+				"85": {
+					"brand": "Chief",
+					"model": "XSM1U",
+					"cost": "202.60"
+				},
+				"98": {
+					"brand": "Chief",
+					"model": "XSM1U",
+					"cost": "202.60"
+				}
+			}
+		},
+		{
+			"label": "Dual",
+			"size": {
+				"55": {
+					"brand": "Chief",
+					"model": "LSM1U",
+					"cost": "182.40"
+				},
+				"65": {
+					"brand": "Chief",
+					"model": "XSM1U",
+					"cost": "202.60"
+				},
+				"75": {
+					"brand": "Chief",
+					"model": "XSM1U",
+					"cost": "202.60"
+				},
+				"85": {
+					"brand": "Chief",
+					"model": "XSM1U",
+					"cost": "202.60"
+				},
+				"98": {
+					"brand": "Chief",
+					"model": "XSM1U",
+					"cost": "202.60"
+				}
+			}
+		}
 	]
 }

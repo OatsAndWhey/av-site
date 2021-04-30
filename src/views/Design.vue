@@ -5,7 +5,7 @@
 		<form action="#" id="configform">
 			<!-- Display -->
 			<div id="display-select" class="form-select">
-				<label for="display">Room size:</label>
+				<label for="display">Display size:</label>
 				<select name="display" v-model="selectedDisplay">
 					<option disabled value="">Please select one</option>
 					<option
@@ -13,69 +13,75 @@
 						:key="display.size"
 						:value="display"
 					>
-						{{ display.roomSize }}
+						{{ display.size }}"
 					</option>
 				</select>
 			</div>
-			<!-- System -->
+			<!-- Display layout -->
 			<transition name="fade">
-				<div id="system-select" class="form-select" v-if="selectedDisplay">
-					<label for="system">Room use:</label>
-					<select name="system" v-model="selectedSystem">
+				<div id="layout-select" class="form-select">
+					<label for="layout">Display layout:</label>
+					<select name="layout" v-model="selectedLayout">
 						<option disabled value="">Please select one</option>
-						<option>Collaboration</option>
-						<option>Presentation</option>
-						<option>Conference call</option>
-					</select>
-				</div>
-			</transition>
-			<!-- Speakers Layout -->
-			<transition name="fade">
-				<div
-					id="speakers-select"
-					class="form-select"
-					v-if="selectedDisplay && selectedSystem"
-				>
-					<label for="speakers">Speaker layout:</label>
-					<select name="speakers" v-model="selectedSpeakers">
-						<option disabled value="">Please select one</option>
-						<option>Below display</option>
-						<option>Sides of display</option>
-						<option>Ceiling tile</option>
+						<option
+							v-for="mount in mounts"
+							:key="mount[selectedDisplay.size]"
+							:value="mount"
+						>
+							{{ mount.label }}
+						</option>
 					</select>
 				</div>
 			</transition>
 		</form>
 
-		<!-- Icons -->
+		<!-- Bill of Materials -->
+		<!-- Make this info populate a smart looking table -->
 		<transition name="slide-fade" mode="out-in">
-			<div class="img-container" v-if="selectedSpeakers">
-				<img alt="Monitor Icon" src="../assets/icons/monitor_icon_small.svg" />
-				<p>
+			<div class="bom-container">
+				<p v-if="selectedDisplay">
+					<!-- If selectedLayout === "Dual" -->
+					<!-- double the price and the number of devices -->
+					{{ selectedLayout.label === 'Dual' ? '2x' : '' }}
 					{{
 						`${selectedDisplay.brand}
 						${selectedDisplay.model} -
-						${selectedDisplay.size}" - \$${selectedDisplay.cost}`
+						${selectedDisplay.size}\" -`
+					}}
+					{{
+						selectedLayout.label === 'Dual'
+							? `\$${selectedDisplay.cost * 2}`
+							: `\$${selectedDisplay.cost}`
 					}}
 				</p>
-				<p>{{ selectedSystem }}</p>
-				<p>{{ selectedSpeakers }}</p>
+				<p v-if="selectedLayout">
+					{{ selectedLayout.label === 'Dual' ? '2x' : '' }}
+					{{
+						`${selectedLayout.size[selectedDisplay.size].brand} -
+							${selectedLayout.size[selectedDisplay.size].model} -`
+					}}
+					{{
+						selectedLayout.label === 'Dual'
+							? `\$${selectedLayout.size[selectedDisplay.size].cost * 2}`
+							: `\$${selectedLayout.size[selectedDisplay.size].cost}`
+					}}
+				</p>
 			</div>
 		</transition>
 	</div>
 </template>
 
 <script>
-import { displays } from '../assets/equipment.json';
+import { displays, mounts } from '../assets/equipment.json';
 
 export default {
 	name: 'Design',
 	data() {
 		return {
 			displays,
+			mounts,
 			selectedDisplay: '',
-			selectedSystem: '',
-			selectedSpeakers: '',
+			selectedLayout: '',
 		};
 	},
 };
