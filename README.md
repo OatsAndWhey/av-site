@@ -26,6 +26,4 @@ npm run lint
 
 ### To Do
 
-1. Figure out the selection methods.
-   - Selecting an option from first dropdown enables the second dropdown and enables/disables options in the second dropdown etc.
-2. Write styles for mobile viewing first, then expand the viewport size up.
+1. Clean up the data so each cost need only be forced to a Number and toLocaleString()'d once. Then the rest will fall into place and we'll live happily ever after

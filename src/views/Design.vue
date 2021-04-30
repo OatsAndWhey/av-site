@@ -39,33 +39,113 @@
 		<!-- Make this info populate a smart looking table -->
 		<transition name="slide-fade" mode="out-in">
 			<div class="bom-container">
-				<p v-if="selectedDisplay">
-					<!-- If selectedLayout === "Dual" -->
-					<!-- double the price and the number of devices -->
-					{{ selectedLayout.label === 'Dual' ? '2x' : '' }}
-					{{
-						`${selectedDisplay.brand}
-						${selectedDisplay.model} -
-						${selectedDisplay.size}\" -`
-					}}
-					{{
-						selectedLayout.label === 'Dual'
-							? `\$${selectedDisplay.cost * 2}`
-							: `\$${selectedDisplay.cost}`
-					}}
-				</p>
-				<p v-if="selectedLayout">
-					{{ selectedLayout.label === 'Dual' ? '2x' : '' }}
-					{{
-						`${selectedLayout.size[selectedDisplay.size].brand} -
-							${selectedLayout.size[selectedDisplay.size].model} -`
-					}}
-					{{
-						selectedLayout.label === 'Dual'
-							? `\$${selectedLayout.size[selectedDisplay.size].cost * 2}`
-							: `\$${selectedLayout.size[selectedDisplay.size].cost}`
-					}}
-				</p>
+				<table style="width: 100%">
+					<tr v-if="selectedDisplay">
+						<th>Item</th>
+						<th>Quantity</th>
+						<th>Manufacturer</th>
+						<th>Model</th>
+						<th>Each</th>
+						<th>Total</th>
+					</tr>
+					<tr v-if="selectedDisplay">
+						<td>{{ `${selectedDisplay.size}" Display` }}</td>
+						<td>{{ selectedLayout.label === 'Dual' ? '2' : '1' }}</td>
+						<td>{{ selectedDisplay.brand }}</td>
+						<td>{{ selectedDisplay.model }}</td>
+						<td>
+							{{
+								`${Number(selectedDisplay.cost).toLocaleString('en-US', {
+									style: 'currency',
+									currency: 'USD',
+									minimumFractionDigits: 0,
+									maximumFractionDigits: 0,
+								})}`
+							}}
+						</td>
+						<td>
+							{{
+								selectedLayout.label === 'Dual'
+									? `${(Number(selectedDisplay.cost) * 2).toLocaleString(
+											'en-US',
+											{
+												style: 'currency',
+												currency: 'USD',
+												minimumFractionDigits: 0,
+												maximumFractionDigits: 0,
+											}
+											// eslint-disable-next-line no-mixed-spaces-and-tabs
+									  )}`
+									: `${Number(selectedDisplay.cost).toLocaleString(
+											'en-US',
+											{
+												style: 'currency',
+												currency: 'USD',
+												minimumFractionDigits: 0,
+												maximumFractionDigits: 0,
+											}
+											// eslint-disable-next-line no-mixed-spaces-and-tabs
+									  )}`
+							}}
+						</td>
+					</tr>
+					<tr v-if="selectedLayout">
+						<td>Wall Mount</td>
+						<td>{{ selectedLayout.label === 'Dual' ? '2' : '1' }}</td>
+						<td>{{ selectedLayout.size[selectedDisplay.size].brand }}</td>
+						<td>{{ selectedLayout.size[selectedDisplay.size].model }}</td>
+						<td>
+							{{
+								`${Number(
+									selectedLayout.size[selectedDisplay.size].cost
+								).toLocaleString(
+									'en-US',
+									{
+										style: 'currency',
+										currency: 'USD',
+										minimumFractionDigits: 0,
+										maximumFractionDigits: 0,
+									}
+									// eslint-disable-next-line no-mixed-spaces-and-tabs
+								)}`
+							}}
+						</td>
+						<td>
+							{{
+								selectedLayout.label === 'Dual'
+									? `${Number(
+											selectedLayout.size[selectedDisplay.size].cost * 2
+											// eslint-disable-next-line no-mixed-spaces-and-tabs
+									  ).toLocaleString(
+											'en-US',
+											{
+												style: 'currency',
+												currency: 'USD',
+												minimumFractionDigits: 0,
+												maximumFractionDigits: 0,
+											}
+											// eslint-disable-next-line no-mixed-spaces-and-tabs
+									  )}`
+									: `${Number(
+											selectedLayout.size[
+												selectedDisplay.size
+												// eslint-disable-next-line no-mixed-spaces-and-tabs
+											].cost
+											// eslint-disable-next-line no-mixed-spaces-and-tabs
+									  ).toLocaleString(
+											'en-US',
+											{
+												style: 'currency',
+												currency: 'USD',
+												minimumFractionDigits: 0,
+												maximumFractionDigits: 0,
+											}
+											// eslint-disable-next-line no-mixed-spaces-and-tabs
+									  )}`
+							}}
+						</td>
+					</tr>
+				</table>
 			</div>
 		</transition>
 	</div>
@@ -107,6 +187,11 @@ img {
 
 .form-select label {
 	display: block;
+}
+
+.bom-container {
+	overflow-x: scroll;
+	scrollbar-width: none;
 }
 
 .fade-enter-active {
